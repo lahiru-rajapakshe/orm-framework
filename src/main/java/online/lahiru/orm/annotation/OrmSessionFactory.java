@@ -53,7 +53,15 @@ public class OrmSessionFactory {
             }
             if (primaryKey == null) throw new RuntimeException("Entity without a primary key");
 
-
+            StringBuilder sb = new StringBuilder();
+            sb.append("CREATE TABLE IF NOT EXISTS ").append(tableName).append("(");
+            for (String column : columns) {
+                sb.append(column).append(" VARCHAR(255),");
+            }
+            sb.append(primaryKey).append(" VARCHAR(255) PRIMARY KEY)");
+            System.out.println(sb);
+            Statement stm = connection.createStatement();
+            stm.execute(sb.toString());
         }
     }
 }
