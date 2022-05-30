@@ -17,5 +17,10 @@ public class OrmSessionFactory {
         return this;
     }
 
+    public OrmSessionFactory setConnection(Connection connection){
+        this.connection = connection;
+        return this;
+    }
+
 
 }
