@@ -22,5 +22,12 @@ public class OrmSessionFactory {
         return this;
     }
 
+    public OrmSessionFactory build(){
+        if (this.connection == null){
+            throw new RuntimeException("Failed to build without a connection");
+        }
+        return this;
+    }
+
 
 }
